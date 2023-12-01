@@ -42,7 +42,7 @@ Validator.isPassword = (selector)=>({
     test: (value)=> /^[A-Za-z]\w{7,14}$/.test(value) ? undefined : "Mật chưa hợp lệ!"
 })
 
-Validator.isPasswordConfirm = (selector)=>({
+Validator.isPasswordConfirm = (selector,getCofirmValue, messages)=>({
     selector,
-    test: (value)=> value.trim() ? undefined : "Vui lòng nhập trường này!"
+    test: (value)=> value == getCofirmValue() ? undefined : messages || "Giá trị nhập vào chưa khớp!"
 })
